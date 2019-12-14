@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AddVehicleComponent} from './add-vehicle/add-vehicle.component'
+import {ViewVehicleComponent} from './view-vehicle/view-vehicle.component'
 
 const routes: Routes = [
-  {path:'add-vehicle', component: AddVehicleComponent},
+  {path:'view-vehicle', component: ViewVehicleComponent},
   { path: '',   redirectTo: '/', pathMatch: 'full' }
 ];
 

@@ -15,8 +15,8 @@
     <div>Vehicle Renting Application</div>
     <div>
         <mat-menu #appMenu = "matMenu">
-            <button mat-menu-item routerLink="/add-vehicle">Add Vehicle</button>
-            <button mat-menu-item>View Vehicle</button>
+            <button mat-menu-item>Add Vehicle</button>
+            <button mat-menu-item routerLink="/view-vehicle">View Vehicle</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor] = "appMenu"> Manage vehicle</button>
         <mat-menu #clientMenu = "matMenu">
