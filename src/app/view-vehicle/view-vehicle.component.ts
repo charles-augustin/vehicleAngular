@@ -1,7 +1,7 @@
-import { Component, OnInit , ViewChild, Inject} from '@angular/core';
-import {MatTableDataSource, MatSort ,MatPaginator} from '@angular/material';
-import {Vehicle} from '../shared/vehicle';
-import {VehicleService} from '../services/vehicle.service';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { Vehicle } from '../shared/vehicle';
+import { VehicleService } from '../services/vehicle.service';
 
 
 
@@ -22,34 +22,35 @@ export class ViewVehicleComponent implements OnInit {
   vehicles: Vehicle[];
   vehicleIds: string[];
   prev: string;
-  next:string;
+  next: string;
   visibility = "shown";
   errMess: string;
 
-  displayedColumns: string[] = ['_id', 'Model', 'Make', 'Type', 'Year', 'Color', 'PlateNo'];
+  displayedColumns: string[] = ['No', 'Model', 'Make', 'Type', 'Year', 'Color', 'PlateNo'];
   dataSource = new MatTableDataSource<Vehicle>(this.vehicles);
 
-  constructor(private vehicleService: VehicleService, 
-    @Inject('baseURL') private baseURL) { }
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
-  @ViewChild(MatSort, {static:true}) sort: MatSort;
-  @ViewChild(MatPaginator,null) paginator :MatPaginator;
+  constructor(private vehicleService: VehicleService,
+    @Inject('baseURL') private baseURL) {
+  
+  }
 
   ngOnInit() {
-
     this.vehicleService.getVehicles()
-      .subscribe(vehicles => this.dataSource = new MatTableDataSource<Vehicle>(vehicles),
-        errmess => this.errMess = <any>errmess);
-    // this.dataSource = new MatTableDataSource<Vehicle>(this.vehicles);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource);
-    
+      .subscribe(vehicles => {
+        this.dataSource = new MatTableDataSource<Vehicle>(vehicles),
+          errmess => this.errMess = <any>errmess;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+
+        //add this line to perform case in-sensitive sort since angular performs case sensitive sort by default
+        this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
+      });
   }
-  
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }
