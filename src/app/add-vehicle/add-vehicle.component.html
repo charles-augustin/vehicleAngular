@@ -1,0 +1,44 @@
+<div class="example-container">
+    <h2>Add Vehicle</h2>
+    <form [formGroup]="addForm" #formDirective="ngForm" (ngSubmit) = "onSubmit(formDirective)">
+      <mat-card-content>
+    <mat-form-field>
+        <mat-label>Select Type</mat-label>
+        <mat-select #type formControlName="Type">
+          <mat-option value="sedan">Sedan</mat-option>
+          <mat-option value="suv">SUV</mat-option>
+          <mat-option value="jeep">Jeep</mat-option>
+        </mat-select>
+        <mat-error *ngIf="addForm.get('Type').invalid">Vehicle Type is required</mat-error>
+      </mat-form-field><br/>
+      <mat-form-field>
+        <mat-label>Make</mat-label>
+        <input matInput formControlName="Make">
+        <mat-error *ngIf="addForm.get('Make').invalid">Make is required</mat-error>
+      </mat-form-field><br/>
+      <mat-form-field>
+          <mat-label>Model</mat-label>
+          <input matInput formControlName="Model">
+          <mat-error *ngIf="addForm.get('Model').invalid">Model is required</mat-error>
+      </mat-form-field><br/>
+      <mat-form-field>
+          <mat-label>Year</mat-label>
+          <input matInput formControlName="Year">
+          <mat-error *ngIf="addForm.get('Year').invalid">{{checkYear()}}</mat-error>
+      </mat-form-field><br/>
+      <mat-form-field>
+          <mat-label>Color</mat-label>
+          <input matInput formControlName="Color">
+          <mat-error *ngIf="addForm.get('Color').hasError('required')">Color is required</mat-error>
+      </mat-form-field><br/>
+      <mat-form-field>
+        <mat-label>Plate No</mat-label>
+        <input matInput formControlName="PlateNo">
+        <mat-error *ngIf="addForm.get('PlateNo').hasError('required')">License Plate Number is required</mat-error>
+      </mat-form-field><br/>
+    </mat-card-content><br/>
+    <mat-card-actions>
+      <button [disabled]="!addForm.valid" type="submit" (click) = "openSnackBar()" mat-raised-button color="primary" >Add</button>
+    </mat-card-actions>
+      </form>
+</div>

@@ -3,7 +3,7 @@ import {Vehicle} from '../shared/vehicle';
 
 import {Observable} from 'rxjs';
 import {map, catchError} from  'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {baseURL} from '../shared/baseurl';
 
 import {ProcessHTTPMsgService} from './process-httpmsg.service'
@@ -29,5 +29,19 @@ export class VehicleService {
   getVehicleIds(): Observable<number[] | any> {
     return this.getVehicles().pipe(map(vehicles => vehicles.map(vehicle=> vehicle._id)))
       .pipe(catchError(error => error));
+  }
+
+  addVehicle(userData): Observable<Vehicle> {
+    console.log(userData);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    const body = JSON.stringify(userData);
+    console.log(body);
+    
+    return this.http.post<Vehicle>(baseURL + 'vehicles', body, httpOptions)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }

@@ -15,15 +15,20 @@ import {MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         MatSortModule,
-        MatPaginatorModule} from '@angular/material';
-import {FormsModule} from '@angular/forms'
+        MatPaginatorModule,
+        MatSelectModule,
+        MatCardModule,
+        MatSnackBarModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { VehicleService } from './services/vehicle.service';
 import { baseURL } from './shared/baseurl';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewVehicleComponent
+    ViewVehicleComponent,
+    AddVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +43,13 @@ import { baseURL } from './shared/baseurl';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatCardModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [VehicleService,
     {provide: 'baseURL', useValue: baseURL}],
