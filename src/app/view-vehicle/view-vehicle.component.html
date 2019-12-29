@@ -50,6 +50,14 @@
             <mat-cell *matCellDef="let element"> {{element.PlateNo}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Action">
+            <mat-header-cell mat-sort-header *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="action-link">
+                <a (click)="openDialog('Update', element)"><mat-icon>edit</mat-icon></a>
+                <button mat-button (click)="openDialog('Delete', element)"><mat-icon>delete</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
@@ -57,3 +65,4 @@
     <mat-paginator #myPaginator [length]="25"
     [pageSize]="5" [pageSizeOptions]="[5,10,25,100]" showFirstLastButtons></mat-paginator>
 </div>
+

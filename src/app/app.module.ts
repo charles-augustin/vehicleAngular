@@ -18,17 +18,21 @@ import {MatButtonModule,
         MatPaginatorModule,
         MatSelectModule,
         MatCardModule,
-        MatSnackBarModule} from '@angular/material';
+        MatSnackBarModule,
+        MatDialogModule
+      } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { VehicleService } from './services/vehicle.service';
 import { baseURL } from './shared/baseurl';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewVehicleComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,12 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
     MatPaginatorModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatDialogModule
+  ],
+  entryComponents:[
+    DialogBoxComponent
   ],
   providers: [VehicleService,
     {provide: 'baseURL', useValue: baseURL}],

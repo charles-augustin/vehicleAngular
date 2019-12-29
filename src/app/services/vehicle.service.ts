@@ -44,4 +44,16 @@ export class VehicleService {
     return this.http.post<Vehicle>(baseURL + 'vehicles', body, httpOptions)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
+
+  updateVehicle(updateData, id:any): Observable<Vehicle>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    const body = JSON.stringify(updateData);
+
+    return this.http.put<Vehicle>(baseURL + 'vehicles/' + id, updateData, httpOptions)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
 }

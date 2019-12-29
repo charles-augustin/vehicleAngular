@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatTable, MatDialog } from '@angular/material';
 import { Vehicle } from '../shared/vehicle';
 import { VehicleService } from '../services/vehicle.service';
-
+import {DialogBoxComponent} from '../dialog-box/dialog-box.component';
 
 
 // const ELEMENT_DATA: Vehicle[] = [
@@ -26,14 +26,15 @@ export class ViewVehicleComponent implements OnInit {
   visibility = "shown";
   errMess: string;
 
-  displayedColumns: string[] = ['No', 'Model', 'Make', 'Type', 'Year', 'Color', 'PlateNo'];
+  displayedColumns: string[] = ['No', 'Model', 'Make', 'Type', 'Year', 'Color', 'PlateNo', 'Action'];
   dataSource = new MatTableDataSource<Vehicle>(this.vehicles);
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatTable, {static: true}) table: MatTable<any>;
 
   constructor(private vehicleService: VehicleService,
-    @Inject('baseURL') private baseURL) {
+    @Inject('baseURL') private baseURL, public dialog: MatDialog) {
   
   }
 
@@ -53,4 +54,30 @@ export class ViewVehicleComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  openDialog(action, obj) {
+    obj.action = action;
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '300px',
+      data: obj
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if(res.event == 'Update')
+        this.updateRowData(res.data);
+      else 
+        this.deleteRowData(res.data);
+    });
+  }
+
+  updateRowData(row_obj){
+    // this.dataSource.filter
+  }
+
+  deleteRowData(row_obj) {
+    // this.dataSource = this.dataSource.filter((value,key) => {
+    //   return value._id != row_obj._id;
+    // })
+  }
+
 }
