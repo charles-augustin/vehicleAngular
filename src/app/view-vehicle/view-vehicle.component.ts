@@ -63,21 +63,20 @@ export class ViewVehicleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(res => {
-      if(res.event == 'Update')
-        this.updateRowData(res.data);
-      else 
-        this.deleteRowData(res.data);
+        this.updateData(res.data);
     });
   }
 
-  updateRowData(row_obj){
-    // this.dataSource.filter
-  }
+  updateData(row_obj){
+    this.vehicleService.getVehicles()
+      .subscribe(vehicles => {
+        this.dataSource = new MatTableDataSource<Vehicle>(vehicles),
+          errmess => this.errMess = <any>errmess;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
 
-  deleteRowData(row_obj) {
-    // this.dataSource = this.dataSource.filter((value,key) => {
-    //   return value._id != row_obj._id;
-    // })
+        //add this line to perform case in-sensitive sort since angular performs case sensitive sort by default
+        this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
+      });
   }
-
 }

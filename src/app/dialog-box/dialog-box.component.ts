@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VehicleService } from '../services/vehicle.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import {ViewVehicleComponent} from '../view-vehicle/view-vehicle.component';
+import { ViewVehicleComponent } from '../view-vehicle/view-vehicle.component';
 
 @Component({
   selector: 'app-dialog-box',
@@ -49,16 +49,21 @@ export class DialogBoxComponent implements OnInit {
     //     console.log("Dialog log");
     //     console.log(this.vehicle);
     //   }, errmess => this.errMess = <any>errmess);
+
   }
 
   doAction() {
     // console.log(this.vehicle);
-    
     this.dialogRef.close({ event: this.action, data: this.local_data });
-    this.vehicleService.updateVehicle(this.updateForm.value, this.data._id)
-      .subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
+    if (this.action == 'Update') {
+      this.vehicleService.updateVehicle(this.updateForm.value, this.data._id)
+        .subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
+    }
+    else {
+      this.vehicleService.deleteVehicle(this.data._id)
+        .subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
+    }
   }
-
 
   closeDialog() {
     this.dialogRef.close({ event: 'Cancel' });

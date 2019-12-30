@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import {Vehicle} from '../shared/vehicle';
+import { Vehicle } from '../shared/vehicle';
 
-import {Observable} from 'rxjs';
-import {map, catchError} from  'rxjs/operators';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {baseURL} from '../shared/baseurl';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { baseURL } from '../shared/baseurl';
 
-import {ProcessHTTPMsgService} from './process-httpmsg.service'
+import { ProcessHTTPMsgService } from './process-httpmsg.service'
 
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
+
 
   constructor(private http: HttpClient, private processHTTPMsgService: ProcessHTTPMsgService) { }
 
@@ -27,33 +32,27 @@ export class VehicleService {
   }
 
   getVehicleIds(): Observable<number[] | any> {
-    return this.getVehicles().pipe(map(vehicles => vehicles.map(vehicle=> vehicle._id)))
+    return this.getVehicles().pipe(map(vehicles => vehicles.map(vehicle => vehicle._id)))
       .pipe(catchError(error => error));
   }
 
   addVehicle(userData): Observable<Vehicle> {
     console.log(userData);
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    const body = JSON.stringify(userData);
-    console.log(body);
-    
-    return this.http.post<Vehicle>(baseURL + 'vehicles', body, httpOptions)
-    .pipe(catchError(this.processHTTPMsgService.handleError));
+    // const body = JSON.stringify(userData);
+    // console.log(body);
+
+    return this.http.post<Vehicle>(baseURL + 'vehicles', userData, httpOptions)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-  updateVehicle(updateData, id:any): Observable<Vehicle>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    const body = JSON.stringify(updateData);
-
+  updateVehicle(updateData, id: any): Observable<Vehicle> {
     return this.http.put<Vehicle>(baseURL + 'vehicles/' + id, updateData, httpOptions)
-    .pipe(catchError(this.processHTTPMsgService.handleError));
+      .pipe(catchError(this.processHTTPMsgService.handleError));
   }
+
+  deleteVehicle(id: any): Observable<Vehicle> {
+    return this.http.delete<Vehicle>(baseURL + 'vehicles/' + id, httpOptions)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
 }
