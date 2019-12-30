@@ -20,8 +20,8 @@
         </mat-menu>
         <button mat-button [matMenuTriggerFor] = "appMenu"> Manage vehicle</button>
         <mat-menu #clientMenu = "matMenu">
-            <button mat-menu-item>Add Client</button>
-            <button mat-menu-item>View Client</button>
+            <button mat-menu-item routerLink="/add-client">Add Client</button>
+            <button mat-menu-item routerLink="/view-client">View Client</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor] = "clientMenu">Manage Client</button>
     </div>

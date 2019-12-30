@@ -26,13 +26,15 @@ import { VehicleService } from './services/vehicle.service';
 import { baseURL } from './shared/baseurl';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { ViewClientComponent } from './view-client/view-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewVehicleComponent,
     AddVehicleComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    ViewClientComponent
   ],
   imports: [
     BrowserModule,

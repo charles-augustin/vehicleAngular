@@ -18,43 +18,38 @@
         </ng-container>
 
         <!-- model Column -->
-        <ng-container matColumnDef="Model">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Model </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.Model}} </mat-cell>
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> First Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
         </ng-container>
 
         <!-- make Column -->
-        <ng-container matColumnDef="Make">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Make </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.Make}} </mat-cell>
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Last Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
         </ng-container>
 
         <!-- type Column -->
-        <ng-container matColumnDef="Type">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Type </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.Type}} </mat-cell>
+        <ng-container matColumnDef="licenseNo">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> License No </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.licenseNo}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="Year">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Year </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.Year}} </mat-cell>
+        <ng-container matColumnDef="lExpiryDate">
+            <mat-header-cell mat-sort-header *matHeaderCellDef>License Expiry Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lExpiryDate}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="Color">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Color </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.Color}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="PlateNo">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Plate Number </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.PlateNo}} </mat-cell>
+        <ng-container matColumnDef="phoneNo">
+            <mat-header-cell mat-sort-header *matHeaderCellDef> Phone No </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.phoneNo}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Action">
             <mat-header-cell mat-sort-header *matHeaderCellDef>Action</mat-header-cell>
             <mat-cell *matCellDef="let element" class="action-link">
-                <a (click)="openDialog('vehicleUpdate', element)"><mat-icon>edit</mat-icon></a>
-                <button mat-button (click)="openDialog('vehicleDelete', element)"><mat-icon>delete</mat-icon></button>
+                <a (click)="openDialog('clientUpdate', element)"><mat-icon>edit</mat-icon></a>
+                <button mat-button (click)="openDialog('clientDelete', element)"><mat-icon>delete</mat-icon></button>
             </mat-cell>
         </ng-container>
 

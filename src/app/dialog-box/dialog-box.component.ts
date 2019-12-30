@@ -5,8 +5,7 @@ import { HttpClient } from '@angular/common/http'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VehicleService } from '../services/vehicle.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { ViewVehicleComponent } from '../view-vehicle/view-vehicle.component';
+import { Client } from '../shared/client';
 
 @Component({
   selector: 'app-dialog-box',
@@ -22,19 +21,26 @@ export class DialogBoxComponent implements OnInit {
     Model: new FormControl('', [Validators.required]),
     Year: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,4}')]),
     Color: new FormControl('', [Validators.required]),
-    PlateNo: new FormControl('', [Validators.required])
+    PlateNo: new FormControl('', [Validators.required]),
+    fName: new FormControl('', [Validators.required])
   });
+    
+
 
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     //@Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: Vehicle,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data:any,
     private _http: HttpClient,
     private vehicleService: VehicleService,
     private route: ActivatedRoute) {
     console.log(data);
+    // console.log(dataClient);
+    
     this.local_data = { ...data };
+  
     this.action = this.local_data.action;
+
   }
 
   action: string;
@@ -55,11 +61,11 @@ export class DialogBoxComponent implements OnInit {
   doAction() {
     // console.log(this.vehicle);
     this.dialogRef.close({ event: this.action, data: this.local_data });
-    if (this.action == 'Update') {
+    if (this.action == 'vehicleUpdate') {
       this.vehicleService.updateVehicle(this.updateForm.value, this.data._id)
         .subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
     }
-    else {
+    else if (this.action == 'vehicleDelete') {
       this.vehicleService.deleteVehicle(this.data._id)
         .subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
     }
