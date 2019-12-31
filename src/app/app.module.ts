@@ -19,14 +19,16 @@ import {MatButtonModule,
         MatSelectModule,
         MatCardModule,
         MatSnackBarModule,
-        MatDialogModule
+        MatDialogModule,
+        MatDatepickerModule,
+        MatNativeDateModule
       } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { VehicleService } from './services/vehicle.service';
 import { baseURL } from './shared/baseurl';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import { ViewClientComponent } from './view-client/view-client.component';
+import { ViewClientComponent } from './view-client/view-client.component'
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { ViewClientComponent } from './view-client/view-client.component';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents:[
     DialogBoxComponent

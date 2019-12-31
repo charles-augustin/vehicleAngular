@@ -4,14 +4,6 @@ import { Vehicle } from '../shared/vehicle';
 import { VehicleService } from '../services/vehicle.service';
 import {DialogBoxComponent} from '../dialog-box/dialog-box.component';
 
-
-// const ELEMENT_DATA: Vehicle[] = [
-//   {_id: 1, Model: 'Hydrogen', Make: 'Benz', Type: 'H', Year:2019, Color:"Red", PlateNo:'H34'},
-//   {_id: 2, Model: 'Helium', Make: 'Audi', Type: 'He', Year:2017, Color:"Blue", PlateNo:'I34'},
-//   {_id: 3, Model: 'Lithium', Make: 'Honda', Type: 'Li', Year:2018, Color:"Yellow", PlateNo:'A34'}
-// ];
-
-
 @Component({
   selector: 'app-view-vehicle',
   templateUrl: './view-vehicle.component.html',

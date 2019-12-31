@@ -3,11 +3,13 @@ import { Client } from '../shared/client';
 import { MatTableDataSource, MatSort, MatPaginator, MatTable, MatDialog } from '@angular/material';
 import { ClientService } from '../services/client.service';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-view-client',
   templateUrl: './view-client.component.html',
-  styleUrls: ['./view-client.component.scss']
+  styleUrls: ['./view-client.component.scss'],
+  providers: [DatePipe]
 })
 export class ViewClientComponent implements OnInit {
 
@@ -18,6 +20,8 @@ export class ViewClientComponent implements OnInit {
   visibility = "shown";
   errMess: string;
 
+  dateVal  =new Date();
+
   displayedColumns: string[] = ['No', 'firstName', 'lastName', 'licenseNo', 'lExpiryDate', 'phoneNo','Action'];
   dataSource = new MatTableDataSource<Client>(this.clients);
 
@@ -26,7 +30,9 @@ export class ViewClientComponent implements OnInit {
   @ViewChild(MatTable, {static: true}) table: MatTable<any>;
 
   constructor(private clientService: ClientService,
-    @Inject('baseURL') private baseURL, public dialog: MatDialog) {
+    @Inject('baseURL') private baseURL, 
+    public dialog: MatDialog,
+    private dPipe: DatePipe) {
   
   }
 

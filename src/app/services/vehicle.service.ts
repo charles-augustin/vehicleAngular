@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
 
 import { ProcessHTTPMsgService } from './process-httpmsg.service'
+import { Client } from '../shared/client';
 
 const httpOptions = {
   headers: new HttpHeaders({

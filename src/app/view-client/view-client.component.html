@@ -37,7 +37,7 @@
 
         <ng-container matColumnDef="lExpiryDate">
             <mat-header-cell mat-sort-header *matHeaderCellDef>License Expiry Date </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.lExpiryDate}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.lExpiryDate | date: 'mediumDate'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="phoneNo">

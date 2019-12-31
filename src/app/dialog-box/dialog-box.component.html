@@ -23,13 +23,36 @@
       Sure to delete ?
     </ng-template>
   </mat-dialog-content>
-  <ng-template #clientTemplate>
-    <mat-form-field *ngIf="action != 'clientDelete'">
-      <input placeholder="First Name" formControlName="fName" matInput [(ngModel)]="local_data.firstName">
-    </mat-form-field>
-    </ng-template>
+
   <mat-dialog-actions>
     <button mat-button (click)="doAction()">{{action}}</button>
     <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
   </mat-dialog-actions>
+</form>
+
+<form [formGroup]="clientForm">
+  <ng-template #clientTemplate>
+    <mat-form-field *ngIf="action != 'clientDelete'">
+      <input placeholder="First Name" formControlName="firstName" matInput [(ngModel)]="local_data.firstName">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'clientDelete'">
+      <input placeholder="Last Name" formControlName="lastName" matInput [(ngModel)]="local_data.lastName">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'clientDelete'">
+      <input placeholder="License No" formControlName="licenseNo" matInput [(ngModel)]="local_data.licenseNo">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'clientDelete'">
+      <input [matDatepicker]="myDatepicker" placeholder="License Expiry Date" formControlName="lExpiryDate" matInput
+        [(ngModel)]="local_data.lExpiryDate" >
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'clientDelete'; else elseClientTemplate">
+      <input placeholder="Phone number" formControlName="phoneNo" matInput [(ngModel)]="local_data.phoneNo">
+    </mat-form-field>
+  </ng-template>
+
+  <ng-template #elseClientTemplate>
+    Sure to delete ?
+  </ng-template>
 </form>
