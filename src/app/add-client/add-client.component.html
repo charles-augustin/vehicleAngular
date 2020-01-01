@@ -1,0 +1,38 @@
+<div class="example-container">
+    <h2>Add Client</h2>
+    <form [formGroup]="addForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+                <mat-error *ngIf="addForm.get('firstName').invalid">First Name is required</mat-error>
+            </mat-form-field><br />
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+                <mat-error *ngIf="addForm.get('lastName').invalid">Last Name is required</mat-error>
+            </mat-form-field><br />
+            <mat-form-field>
+                <mat-label>License No</mat-label>
+                <input matInput formControlName="licenseNo">
+                <mat-error *ngIf="addForm.get('licenseNo').invalid">License No is required</mat-error>
+            </mat-form-field><br />
+            <mat-form-field>
+                <mat-label>License Expiry Date</mat-label>
+                <input [matDatepicker]="myDatepicker" readonly formControlName="lExpiryDate" matInput>
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+                <mat-error>License Expiry Date is required</mat-error>
+            </mat-form-field><br />
+            <mat-form-field>
+                <mat-label>Phone No</mat-label>
+                <input matInput formControlName="phoneNo">
+                <mat-error *ngIf="addForm.get('phoneNo').hasError('required')">Phone number is required</mat-error>
+            </mat-form-field><br />
+        </mat-card-content><br />
+        <mat-card-actions>
+            <button [disabled]="!addForm.valid" type="submit" (click)="openSnackBar()" mat-raised-button
+                color="primary">Add</button>
+        </mat-card-actions>
+    </form>
+</div>

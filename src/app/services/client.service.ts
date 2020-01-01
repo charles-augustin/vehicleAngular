@@ -26,6 +26,11 @@ export class ClientService {
       .pipe(catchError(this.processHTTP.handleError));
   }
 
+  addClient(clientData) : Observable<Client> {
+    return this._http.post<Client>(baseURL + 'clients', clientData, httpOptions)
+      .pipe(catchError(this.processHTTP.handleError));
+  }
+
   updateClient(clientData, id: any):Observable<Client> {
     return this._http.put<Client>(baseURL + 'clients/' + id, clientData, httpOptions)
       .pipe(catchError(this.processHTTP.handleError));

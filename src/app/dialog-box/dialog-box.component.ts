@@ -1,11 +1,9 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Vehicle } from '../shared/vehicle';
-import { HttpClient } from '@angular/common/http'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VehicleService } from '../services/vehicle.service';
 import {ClientService} from '../services/client.service';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Client } from '../shared/client';
 
 @Component({

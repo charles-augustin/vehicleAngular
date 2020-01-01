@@ -1,63 +1,68 @@
-<!-- <p>add-vehicle works!</p> -->
-<mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
+<div class="container">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
 
-<div class="mat-elevation-z8">
-    <mat-table [dataSource]="dataSource" matSort>
-        <!-- Position Column -->
-        <ng-container matColumnDef="No">
-            <mat-header-cell mat-sort-header *matHeaderCellDef>No. </mat-header-cell>
-            <mat-cell *matCellDef="let element; let j=index">
-                {{ (j+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </mat-cell>
-        </ng-container>
+    <div class="mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="No">
+                <mat-header-cell mat-sort-header *matHeaderCellDef>No. </mat-header-cell>
+                <mat-cell *matCellDef="let element; let j=index">
+                    {{ (j+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="_id">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> element_id </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element._id}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="_id">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> element_id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element._id}} </mat-cell>
+            </ng-container>
 
-        <!-- model Column -->
-        <ng-container matColumnDef="firstName">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> First Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
-        </ng-container>
+            <!-- model Column -->
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> First Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+            </ng-container>
 
-        <!-- make Column -->
-        <ng-container matColumnDef="lastName">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Last Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
-        </ng-container>
+            <!-- make Column -->
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+            </ng-container>
 
-        <!-- type Column -->
-        <ng-container matColumnDef="licenseNo">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> License No </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.licenseNo}} </mat-cell>
-        </ng-container>
+            <!-- type Column -->
+            <ng-container matColumnDef="licenseNo">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> License No </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.licenseNo}} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="lExpiryDate">
-            <mat-header-cell mat-sort-header *matHeaderCellDef>License Expiry Date </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.lExpiryDate | date: 'mediumDate'}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="lExpiryDate">
+                <mat-header-cell mat-sort-header *matHeaderCellDef>License Expiry Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.lExpiryDate | date: 'mediumDate'}} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="phoneNo">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Phone No </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.phoneNo}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="phoneNo">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> Phone No </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.phoneNo}} </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="Action">
-            <mat-header-cell mat-sort-header *matHeaderCellDef>Action</mat-header-cell>
-            <mat-cell *matCellDef="let element" class="action-link">
-                <a (click)="openDialog('clientUpdate', element)"><mat-icon>edit</mat-icon></a>
-                <button mat-button (click)="openDialog('clientDelete', element)"><mat-icon>delete</mat-icon></button>
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="Action">
+                <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                <mat-cell *matCellDef="let element" class="action-link">
+                    <a (click)="openDialog('clientUpdate', element)">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-button (click)="openDialog('clientDelete', element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
 
-    <mat-paginator #myPaginator [length]="25"
-    [pageSize]="5" [pageSizeOptions]="[5,10,25,100]" showFirstLastButtons></mat-paginator>
+        <mat-paginator #myPaginator [length]="25" [pageSize]="5" [pageSizeOptions]="[5,10,25,100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+
 </div>
-

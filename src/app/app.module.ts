@@ -28,7 +28,8 @@ import { VehicleService } from './services/vehicle.service';
 import { baseURL } from './shared/baseurl';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import { ViewClientComponent } from './view-client/view-client.component'
+import { ViewClientComponent } from './view-client/view-client.component';
+import { AddClientComponent } from './add-client/add-client.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ViewClientComponent } from './view-client/view-client.component'
     ViewVehicleComponent,
     AddVehicleComponent,
     DialogBoxComponent,
-    ViewClientComponent
+    ViewClientComponent,
+    AddClientComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,15 @@
 .example-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-  }
-  
-//   .example-container > * {
-//     width: 100%;
-//   }
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  text-align: center;
+}
 
-mat-form-field, button {
-    width: 40%;
+mat-form-field,
+button {
+  width: 40%;
+}
+
+.container {
+  margin: 10px 10px;
 }
