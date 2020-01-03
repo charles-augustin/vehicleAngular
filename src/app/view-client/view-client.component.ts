@@ -45,7 +45,7 @@ export class ViewClientComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
 
         //add this line to perform case in-sensitive sort since angular performs case sensitive sort by default
-        this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
+        // this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
       });
   }
 
@@ -74,7 +74,7 @@ export class ViewClientComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
 
         //add this line to perform case in-sensitive sort since angular performs case sensitive sort by default
-        this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
+        // this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
       });
   }
 

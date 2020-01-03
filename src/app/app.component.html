@@ -18,12 +18,18 @@
             <button mat-menu-item routerLink="/add-vehicle">Add Vehicle</button>
             <button mat-menu-item routerLink="/view-vehicle">View Vehicle</button>
         </mat-menu>
-        <button mat-button [matMenuTriggerFor] = "appMenu"> Manage vehicle</button>
+        <button mat-button [matMenuTriggerFor] = "appMenu"> Manage Vehicle</button>
         <mat-menu #clientMenu = "matMenu">
             <button mat-menu-item routerLink="/add-client">Add Client</button>
             <button mat-menu-item routerLink="/view-client">View Client</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor] = "clientMenu">Manage Client</button>
+
+        <mat-menu #clientMenu = "matMenu">
+            <button mat-menu-item routerLink="/add-client">Create Reservation</button>
+            <button mat-menu-item routerLink="/view-client">Cancel/ Return Reservation</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor] = "clientMenu">Manage Rental</button>
     </div>
 </mat-toolbar>
 <br/>

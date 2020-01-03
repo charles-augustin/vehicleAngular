@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
-<form [formGroup]="updateForm">
+<form [formGroup]="updateForm" #formDirective="ngForm">
   <mat-dialog-content *ngIf="(action == 'vehicleDelete' || action == 'vehicleUpdate'); else clientTemplate">
     <mat-form-field *ngIf="action != 'vehicleDelete'">
       <input placeholder="Type" formControlName="Type" matInput [(ngModel)]="local_data.Type">
@@ -25,7 +25,7 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-button (click)="doAction()">{{action}}</button>
+    <button mat-button (click)="doAction(formDirective)">{{action}}</button>
     <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
   </mat-dialog-actions>
 </form>
