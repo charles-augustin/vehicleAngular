@@ -29,7 +29,8 @@ import { baseURL } from './shared/baseurl';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { ViewClientComponent } from './view-client/view-client.component';
-import { AddClientComponent } from './add-client/add-client.component'
+import { AddClientComponent } from './add-client/add-client.component';
+import { CreateReservationComponent } from './create-reservation/create-reservation.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddClientComponent } from './add-client/add-client.component'
     AddVehicleComponent,
     DialogBoxComponent,
     ViewClientComponent,
-    AddClientComponent
+    AddClientComponent,
+    CreateReservationComponent
   ],
   imports: [
     BrowserModule,

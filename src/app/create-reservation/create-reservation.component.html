@@ -1,0 +1,27 @@
+<div class="example-container">
+    <h2>Create Reservation</h2>
+    <form [formGroup]="createReservationForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+        <mat-card-content>
+            <mat-form-field *ngIf="loadedVehicle">
+                <mat-label>Select Vehicle</mat-label>
+                <mat-select #type formControlName="vehicle">
+                    <mat-option *ngFor="let t of loadedVehicle" [value]="t._id">{{t.Type}} - {{t.Make}} - {{t.Model}} -
+                        {{t.Year}} - {{t.Color}} - {{t.PlateNo}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createReservationForm.get('vehicle').invalid">Vehicle is required</mat-error>
+            </mat-form-field><br />
+            <mat-form-field *ngIf="loadedClient">
+                <mat-label>Select Client</mat-label>
+                <mat-select #type formControlName="client">
+                    <mat-option *ngFor="let t of loadedClient" [value]="t._id">{{t.firstName}} {{t.lastName}} -
+                        {{t.licenseNo}} - {{t.lExpiryDate | date:'mediumDate'}} - {{t.phoneNo}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createReservationForm.get('client').invalid">Client is required</mat-error>
+            </mat-form-field><br />
+        </mat-card-content><br/>
+        <mat-card-actions>
+            <button [disabled]="!createReservationForm.valid" type="submit" (click)="openSnackBar()" mat-raised-button
+                color="primary">Create Reservation</button>
+        </mat-card-actions>
+    </form>
+</div>

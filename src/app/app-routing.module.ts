@@ -4,12 +4,14 @@ import {ViewVehicleComponent} from './view-vehicle/view-vehicle.component'
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { ViewClientComponent } from './view-client/view-client.component';
 import { AddClientComponent } from './add-client/add-client.component';
+import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 
 const routes: Routes = [
   {path:'view-vehicle', component: ViewVehicleComponent},
   {path:'add-vehicle', component: AddVehicleComponent},
   {path:'view-client', component: ViewClientComponent},
   {path:'add-client', component: AddClientComponent},
+  {path:'create-reservation', component: CreateReservationComponent},
   { path: '',   redirectTo: '/', pathMatch: 'full' }
 ];
 

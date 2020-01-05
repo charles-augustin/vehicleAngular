@@ -56,4 +56,9 @@ export class VehicleService {
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
+  getVehicleType(): Observable<any[]> {
+    return this.http.get<any[]>(baseURL + 'vehicles/get-type')
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
 }
