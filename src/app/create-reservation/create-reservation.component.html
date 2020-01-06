@@ -18,7 +18,21 @@
                 </mat-select>
                 <mat-error *ngIf="createReservationForm.get('client').invalid">Client is required</mat-error>
             </mat-form-field><br />
-        </mat-card-content><br/>
+            <mat-form-field>
+                <mat-label>From Date</mat-label>
+                <input [matDatepicker]= "fromDatepicker" readonly formControlName="fromDate" matInput>
+                <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #fromDatepicker></mat-datepicker>
+                <mat-error>From Date is required</mat-error>
+            </mat-form-field><br />
+            <mat-form-field>
+                <mat-label>To Date</mat-label>
+                <input [matDatepicker]="myDatepicker" readonly formControlName="toDate" matInput>
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+                <mat-error>To Date is required</mat-error>
+            </mat-form-field><br />
+        </mat-card-content><br />
         <mat-card-actions>
             <button [disabled]="!createReservationForm.valid" type="submit" (click)="openSnackBar()" mat-raised-button
                 color="primary">Create Reservation</button>
