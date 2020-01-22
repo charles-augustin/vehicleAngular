@@ -39,8 +39,6 @@ export class VehicleService {
 
   addVehicle(userData): Observable<Vehicle> {
     console.log(userData);
-    // const body = JSON.stringify(userData);
-    // console.log(body);
 
     return this.http.post<Vehicle>(baseURL + 'vehicles', userData, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError));

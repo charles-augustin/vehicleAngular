@@ -29,4 +29,9 @@ export class ReserveService {
     return this.http.post<Reserve>(baseURL + 'reservation', reserveData, httpOptions)
       .pipe(catchError(this.processHTTP.handleError));
   }
+
+  findReservationByVehicle(id: string): Observable<Reserve>{
+    return this.http.get<Reserve>(baseURL + 'findReservationByVehicle/'+ id)
+      .pipe(catchError(this.processHTTP.handleError));
+  }
 }

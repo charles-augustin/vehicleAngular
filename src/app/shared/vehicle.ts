@@ -6,4 +6,5 @@ export class Vehicle {
     Year: number;
     Color: string;
     PlateNo: string;
+    Available: string;
 }
