@@ -36,7 +36,7 @@ export class ClientService {
       .pipe(catchError(this.processHTTP.handleError));
   }
 
-  deleteClient(id:any): Observable<Client> {
+  deleteClient(id: any): Observable<Client> {
     return this._http.delete<Client>(baseURL + 'clients/' + id, httpOptions)
       .pipe(catchError(this.processHTTP.handleError));
   }

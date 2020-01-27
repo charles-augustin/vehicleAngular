@@ -30,7 +30,8 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { ViewClientComponent } from './view-client/view-client.component';
 import { AddClientComponent } from './add-client/add-client.component';
-import { CreateReservationComponent } from './create-reservation/create-reservation.component'
+import { CreateReservationComponent } from './create-reservation/create-reservation.component';
+import { CancelReservationComponent } from './cancel-reservation/cancel-reservation.component'
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CreateReservationComponent } from './create-reservation/create-reservat
     DialogBoxComponent,
     ViewClientComponent,
     AddClientComponent,
-    CreateReservationComponent
+    CreateReservationComponent,
+    CancelReservationComponent
   ],
   imports: [
     BrowserModule,

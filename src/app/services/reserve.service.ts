@@ -5,18 +5,17 @@ import { Observable } from 'rxjs';
 import { Reserve } from '../shared/reserve';
 import { baseURL } from '../shared/baseurl';
 import { catchError } from 'rxjs/operators';
+import { ObserveOnMessage } from 'rxjs/internal/operators/observeOn';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
+  'Content-Type': 'application/json'
+})
 };
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 
 export class ReserveService {
 
@@ -30,8 +29,18 @@ export class ReserveService {
       .pipe(catchError(this.processHTTP.handleError));
   }
 
-  findReservationByVehicle(id: string): Observable<Reserve>{
-    return this.http.get<Reserve>(baseURL + 'findReservationByVehicle/'+ id)
+  findReservationByVehicle(id: string): Observable<Reserve> {
+    return this.http.get<Reserve>(baseURL + 'findReservationByVehicle/' + id)
+      .pipe(catchError(this.processHTTP.handleError));
+  }
+
+  getReservation(): Observable<Reserve[]> {
+    return this.http.get<Reserve[]>(baseURL + 'reservation')
+      .pipe(catchError(this.processHTTP.handleError));
+  }
+
+  updateReservationStatus(id: string, status): Observable<Reserve> {
+    return this.http.put<Reserve>(baseURL + 'updateStatus/' + id, status, httpOptions)
       .pipe(catchError(this.processHTTP.handleError));
   }
 }
