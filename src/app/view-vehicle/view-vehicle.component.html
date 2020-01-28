@@ -51,6 +51,11 @@
                 <mat-cell *matCellDef="let element"> {{element.PlateNo}} </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="Available">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> Available? </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Available}} </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="Action">
                 <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
                 <mat-cell *matCellDef="let element" class="action-link">

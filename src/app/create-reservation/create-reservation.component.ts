@@ -48,30 +48,35 @@ export class CreateReservationComponent implements OnInit {
     console.log(this.createReservationForm.value);
     console.log(this.createReservationForm.get('vehicle').value);
 
-    this.vehicleService.getVehicle(this.createReservationForm.get('vehicle').value)
-      .subscribe(vehicle => {
-        this.vehicle = <Vehicle>vehicle;
-        console.log(this.vehicle);
 
-        this.reserveService.findReservationByVehicle(this.createReservationForm.get('vehicle').value)
-          .subscribe(reserve => {
-            this.reserves = <Reserve[]>reserve;
-            this.reserves.forEach(ele => {
-              console.log(ele);
-              if (ele.fromDate <= this.createReservationForm.get('toDate').value && ele.toDate >= this.createReservationForm.get('fromDate').value) {
-                this.openSnackBar('failure', formDirective);
-                return;
-              }
-              else {
-                this.reserveService.createReservation(this.createReservationForm.value)
-                  .subscribe(reserve => this.reserve = <Reserve>reserve);
-                this.openSnackBar('success', formDirective);
-                return;
-              }
-            });
-          });
 
+    this.reserveService.findReservationByVehicle(this.createReservationForm.get('vehicle').value)
+      .subscribe(reserve => {
+        this.reserves = <Reserve[]>reserve;
+        this.reserves.forEach(ele => {
+          console.log(ele);
+          if (ele.fromDate <= this.createReservationForm.get('toDate').value && ele.toDate >= this.createReservationForm.get('fromDate').value) {
+            this.openSnackBar('failure', formDirective);
+            return;
+          }
+          else {
+            this.reserveService.createReservation(this.createReservationForm.value)
+              .subscribe(reserve => this.reserve = <Reserve>reserve);
+
+            this.openSnackBar('success', formDirective);
+            return;
+          }
+        });
       });
+
+    this.reserveService.createReservation(this.createReservationForm.value)
+      .subscribe(reserve => this.reserve = <Reserve>reserve);
+
+    //update the vehicle availability
+    this.vehicleService.updateVehicleAvailability(this.createReservationForm.get('vehicle').value, { "Available": "No" }).subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
+    console.log("No");
+
+    this.openSnackBar('success', formDirective);
   }
 
   openSnackBar(msg: any, formDirective: FormGroupDirective) {
@@ -86,7 +91,5 @@ export class CreateReservationComponent implements OnInit {
     this.snackBar.open(message, "", {
       duration: 2500
     });
-
-
   }
 }

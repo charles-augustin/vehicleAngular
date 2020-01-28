@@ -59,4 +59,9 @@ export class VehicleService {
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
+  updateVehicleAvailability(id, status): Observable<Vehicle> {
+    return this.http.put<Vehicle>(baseURL + 'vehicles/updateVehicleStatus/' + id, status, httpOptions)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
 }

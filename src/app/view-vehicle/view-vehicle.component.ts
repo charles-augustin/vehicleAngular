@@ -18,7 +18,7 @@ export class ViewVehicleComponent implements OnInit {
   visibility = "shown";
   errMess: string;
 
-  displayedColumns: string[] = ['No', 'Model', 'Make', 'Type', 'Year', 'Color', 'PlateNo', 'Action'];
+  displayedColumns: string[] = ['No', 'Model', 'Make', 'Type', 'Year', 'Color', 'PlateNo', 'Available', 'Action'];
   dataSource = new MatTableDataSource<Vehicle>(this.vehicles);
 
   @ViewChild(MatSort, { static: false }) sort: MatSort;
