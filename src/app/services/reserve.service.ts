@@ -29,8 +29,8 @@ export class ReserveService {
       .pipe(catchError(this.processHTTP.handleError));
   }
 
-  findReservationByVehicle(id: string): Observable<Reserve> {
-    return this.http.get<Reserve>(baseURL + 'findReservationByVehicle/' + id)
+  findReservationByVehicle(id: string): Observable<Reserve[]> {
+    return this.http.get<Reserve[]>(baseURL + 'reservation/findReservationByVehicle/' + id)
       .pipe(catchError(this.processHTTP.handleError));
   }
 
@@ -40,7 +40,7 @@ export class ReserveService {
   }
 
   updateReservationStatus(id: string, status): Observable<Reserve> {
-    return this.http.put<Reserve>(baseURL + 'updateStatus/' + id, status, httpOptions)
+    return this.http.put<Reserve>(baseURL + 'reservation/updateStatus/' + id, status, httpOptions)
       .pipe(catchError(this.processHTTP.handleError));
   }
 }

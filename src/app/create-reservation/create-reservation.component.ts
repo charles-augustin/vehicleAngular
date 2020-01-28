@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material';
 export class CreateReservationComponent implements OnInit {
   available: any;
   reserve: Reserve;
+  reserves: Reserve[];
   vehicle: Vehicle;
   loadedVehicle: Vehicle[];
   loadedClient: Client[];
@@ -52,33 +53,40 @@ export class CreateReservationComponent implements OnInit {
         this.vehicle = <Vehicle>vehicle;
         console.log(this.vehicle);
 
-        if (this.vehicle.Available == 'Yes') {
-          this.reserveService.createReservation(this.createReservationForm.value)
-            .subscribe(reserve => this.reserve = <Reserve>reserve);
-          this.openSnackBar('success', formDirective);
-        }
+        this.reserveService.findReservationByVehicle(this.createReservationForm.get('vehicle').value)
+          .subscribe(reserve => {
+            this.reserves = <Reserve[]>reserve;
+            this.reserves.forEach(ele => {
+              console.log(ele);
+              if (ele.fromDate <= this.createReservationForm.get('toDate').value && ele.toDate >= this.createReservationForm.get('fromDate').value) {
+                this.openSnackBar('failure', formDirective);
+                return;
+              }
+              else {
+                this.reserveService.createReservation(this.createReservationForm.value)
+                  .subscribe(reserve => this.reserve = <Reserve>reserve);
+                this.openSnackBar('success', formDirective);
+                return;
+              }
+            });
+          });
 
-        else {
-          this.reserveService.findReservationByVehicle(this.createReservationForm.get('vehicle').value)
-            .subscribe(reserve => this.reserve = <Reserve>reserve);
-          if (this.reserve.fromDate <= this.createReservationForm.get('toDate').value && this.reserve.toDate >= this.createReservationForm.get('fromDate').value) {
-            this.openSnackBar('failure', formDirective);
-          }
-        }
       });
   }
 
   openSnackBar(msg: any, formDirective: FormGroupDirective) {
     let message;
-    if (msg == 'success')
+    if (msg == 'success') {
       message = "Reservation Created Successfully!";
+      formDirective.resetForm();
+      this.createReservationForm.reset();
+    }
     else
       message = "Reservation cannot be created!"
     this.snackBar.open(message, "", {
       duration: 2500
     });
-    
-    formDirective.resetForm();
-    this.createReservationForm.reset();
+
+
   }
 }

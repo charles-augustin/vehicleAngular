@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CancelReservationComponent implements OnInit {
   reserves: Reserve[];
-  reserve:  Reserve;
+  reserve: Reserve;
   clientIds: string[];
   prev: string;
   next: string;
@@ -39,6 +39,13 @@ export class CancelReservationComponent implements OnInit {
       .subscribe(reserves => {
         this.dataSource = new MatTableDataSource<Reserve>(reserves),
           errmess => this.errMess = <any>errmess;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch (property) {
+            case 'client': return item.client.firstName;
+            case 'vehicle': return item.vehicle.Model;
+            default: return item[property];
+          }
+        };
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
 
@@ -65,10 +72,10 @@ export class CancelReservationComponent implements OnInit {
   }
 
   action(id, perform) {
-    console.log({status:perform});
-    
-      this.reserveService.updateReservationStatus(id, perform)
-        .subscribe(reserves => this.reserve = <Reserve> reserves);
+    console.log({ "status": perform });
+
+    this.reserveService.updateReservationStatus(id, { "status": perform })
+      .subscribe(reserves => this.reserve = <Reserve>reserves);
   }
 }
 
