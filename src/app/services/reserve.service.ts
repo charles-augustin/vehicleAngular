@@ -39,6 +39,11 @@ export class ReserveService {
       .pipe(catchError(this.processHTTP.handleError));
   }
 
+  getAllReservations(): Observable<Reserve[]> {
+    return this.http.get<Reserve[]>(baseURL + 'reservation/findAll')
+      .pipe(catchError(this.processHTTP.handleError));
+  }
+
   updateReservationStatus(id: string, status): Observable<Reserve> {
     return this.http.put<Reserve>(baseURL + 'reservation/updateStatus/' + id, status, httpOptions)
       .pipe(catchError(this.processHTTP.handleError));

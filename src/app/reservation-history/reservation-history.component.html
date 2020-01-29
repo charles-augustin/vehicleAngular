@@ -1,0 +1,61 @@
+<div class="container">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="No">
+                <mat-header-cell mat-sort-header *matHeaderCellDef>No. </mat-header-cell>
+                <mat-cell *matCellDef="let element; let j=index">
+                    {{ (j+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="_id">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> element_id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element._id}} </mat-cell>
+            </ng-container>
+
+            <!-- model Column -->
+            <ng-container matColumnDef="vehicle">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> Vehicle </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.vehicle.Model}} - {{element.vehicle.Make}} -
+                    {{element.vehicle.Type}} - {{element.vehicle.Year}} - {{element.vehicle.Color}} -
+                    {{element.vehicle.PlateNo}} </mat-cell>
+            </ng-container>
+
+            <!-- make Column -->
+            <ng-container matColumnDef="client">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> Client </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.client.firstName}} {{element.client.lastName}} -
+                    {{element.client.licenseNo}} - {{element.client.phoneNo}} -
+                    {{element.client.lExpiryDate | date: 'mediumDate'}}
+                </mat-cell>
+            </ng-container>
+
+            <!-- type Column -->
+            <ng-container matColumnDef="fromDate">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> From Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.fromDate  | date: 'mediumDate'}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="toDate">
+                <mat-header-cell mat-sort-header *matHeaderCellDef>To Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.toDate  | date: 'mediumDate'}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell mat-sort-header *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status | titlecase}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator #myPaginator [length]="25" [pageSize]="5" [pageSizeOptions]="[5,10,25,100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+
+</div>

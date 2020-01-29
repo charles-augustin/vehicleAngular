@@ -1,0 +1,50 @@
+.container {
+    margin: 10px 10px;
+  }
+  
+  table {
+    width: 90%;
+  }
+  
+  .mat-column-No {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 4% !important;
+    width: 4% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-vehicle {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 27% !important;
+    width: 27% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-client {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
