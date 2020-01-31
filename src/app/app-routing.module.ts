@@ -7,6 +7,7 @@ import { AddClientComponent } from './add-client/add-client.component';
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { CancelReservationComponent } from './cancel-reservation/cancel-reservation.component';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'view-vehicle', component: ViewVehicleComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'create-reservation', component: CreateReservationComponent },
   { path: 'cancel-reservation', component: CancelReservationComponent },
   { path: 'reservation-history', component: ReservationHistoryComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 

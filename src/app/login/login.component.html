@@ -1,0 +1,20 @@
+<form #loginForm="ngForm">
+    <mat-card>Login</mat-card>
+    <mat-dialog-content>
+        <mat-form-field>
+            <input placeholder="User Name" [(ngModel)]="user.username" #username="ngModel" name="username" matInput
+                required>
+            <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input placeholder="Password" [(ngModel)]="user.password" #password="ngModel" name="password" matInput
+                required>
+            <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="loginForm.invalid">Login</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+</form>
