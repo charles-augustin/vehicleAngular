@@ -40,4 +40,9 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log(result);
       });
   }
+
+  logOut() {
+    this.username = undefined;
+    this.authService.logOut();
+  }
 }

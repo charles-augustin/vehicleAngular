@@ -92,4 +92,8 @@ export class AuthService {
   getUserName(): Observable<String> {
     return this.username.asObservable();
   }
+
+  logOut() {
+    this.destroyCredentials();
+  }
 }
