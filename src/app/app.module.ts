@@ -38,6 +38,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { ClientService } from './services/client.service';
 import { ReserveService } from './services/reserve.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ReserveService } from './services/reserve.service';
     CreateReservationComponent,
     CancelReservationComponent,
     ReservationHistoryComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

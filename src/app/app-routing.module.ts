@@ -8,6 +8,7 @@ import { CreateReservationComponent } from './create-reservation/create-reservat
 import { CancelReservationComponent } from './cancel-reservation/cancel-reservation.component';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
 import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: 'view-vehicle', component: ViewVehicleComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'cancel-reservation', component: CancelReservationComponent },
   { path: 'reservation-history', component: ReservationHistoryComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 
