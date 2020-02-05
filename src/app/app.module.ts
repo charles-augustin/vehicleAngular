@@ -39,6 +39,8 @@ import { AuthService } from './services/auth.service';
 import { ClientService } from './services/client.service';
 import { ReserveService } from './services/reserve.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { NbThemeModule, NbLayoutModule, NbIconModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatIconModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbIconModule
   ],
   entryComponents: [
     DialogBoxComponent,

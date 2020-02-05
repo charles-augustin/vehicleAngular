@@ -4,23 +4,23 @@
         <mat-form-field>
             <input placeholder="User Name" [(ngModel)]="user.username" #username="ngModel" name="username" matInput
                 required>
-            <mat-error *ngIf="validate && username.errors?.required">Username is required</mat-error>
+            <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
             <input placeholder="Name" [(ngModel)]="user.name" #name="ngModel" name="name" matInput required>
-            <mat-error *ngIf="validate && name.errors?.required">Name is required</mat-error>
+            <mat-error *ngIf="name.errors?.required">Name is required</mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
             <input placeholder="Email" [(ngModel)]="user.email" #email="ngModel" name="email" matInput required>
-            <mat-error *ngIf="validate && email.errors?.required">Email is required</mat-error>
+            <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
         </mat-form-field>
         <br />
         <mat-form-field>
             <input placeholder="Password" [(ngModel)]="user.password" #password="ngModel" name="password" matInput
                 required>
-            <mat-error *ngIf="validate && password.errors?.required">Password is required</mat-error>
+            <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

@@ -1,49 +1,52 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <button mat-raised-button>Hello</button> -->
+<nb-layout>
 
-<!-- <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-        Menu<br/>
-        <button (click) = "sidenav.toggle()">Add Vehicle</button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-icon><button (click)="sidenav.toggle()">menu_open</button></mat-icon>
-    </mat-sidenav-content>
-</mat-sidenav-container> -->
+  <nb-layout-header fixed>
+  <!-- Insert header here -->
+  <mat-toolbar color="primary" class="navbar">
+        <div>Vehicle Renting Application</div>
+        <div>
+            <mat-menu #appMenu="matMenu">
+                <button mat-menu-item routerLink="/add-vehicle">Add Vehicle</button>
+                <button mat-menu-item routerLink="/view-vehicle">View Vehicle</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="appMenu"> Manage Vehicle</button>
+            <mat-menu #clientMenu="matMenu">
+                <button mat-menu-item routerLink="/add-client">Add Client</button>
+                <button mat-menu-item routerLink="/view-client">View Client</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="clientMenu">Manage Client</button>
+    
+            <mat-menu #reserveMenu="matMenu">
+                <button mat-menu-item routerLink="/create-reservation">Create Reservation</button>
+                <button mat-menu-item routerLink="/cancel-reservation">Cancel/ Return Vehicle</button>
+                <button mat-menu-item routerLink="/reservation-history">View Reservation History</button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="reserveMenu">Manage Reservation</button>
+            <span class="flex-spacer"></span>
+            <mat-menu #acctMenu="matMenu">
+                <button mat-menu-item routerLink="/profile"><span class="fa fa-bookmark"></span>My Bookings</button>
+                <button mat-menu-item routerLink="/sign-up"><span class="fa fa-arrow-circle-up fa-lg"></span>Sign
+                    Up</button>
+                <button *ngIf="!username" mat-menu-item (click)="openLoginForm()"><span
+                        class="fa fa-sign-in fa-lg"></span>Login</button>
+                <a *ngIf="username" mat-button (click)="logOut()"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="acctMenu">
+                <mat-icon>account_box</mat-icon><span *ngIf="username">{{username}}</span>
+            </button>
+        </div>
+    </mat-toolbar>
+  </nb-layout-header>
 
-<mat-toolbar color="primary" class="navbar">
-    <div>Vehicle Renting Application</div>
-    <div>
-        <mat-menu #appMenu="matMenu">
-            <button mat-menu-item routerLink="/add-vehicle">Add Vehicle</button>
-            <button mat-menu-item routerLink="/view-vehicle">View Vehicle</button>
-        </mat-menu>
-        <button mat-button [matMenuTriggerFor]="appMenu"> Manage Vehicle</button>
-        <mat-menu #clientMenu="matMenu">
-            <button mat-menu-item routerLink="/add-client">Add Client</button>
-            <button mat-menu-item routerLink="/view-client">View Client</button>
-        </mat-menu>
-        <button mat-button [matMenuTriggerFor]="clientMenu">Manage Client</button>
+  <nb-layout-column>
+    
+    
+    <br />
+    <router-outlet></router-outlet>
+  </nb-layout-column>
 
-        <mat-menu #reserveMenu="matMenu">
-            <button mat-menu-item routerLink="/create-reservation">Create Reservation</button>
-            <button mat-menu-item routerLink="/cancel-reservation">Cancel/ Return Vehicle</button>
-            <button mat-menu-item routerLink="/reservation-history">View Reservation History</button>
-        </mat-menu>
-        <button mat-button [matMenuTriggerFor]="reserveMenu">Manage Reservation</button>
-        <span class="flex-spacer"></span>
-        <mat-menu #acctMenu="matMenu">
-            <button mat-menu-item routerLink="/profile"><span class="fa fa-bookmark"></span>My Bookings</button>
-            <button mat-menu-item routerLink="/sign-up"><span class="fa fa-arrow-circle-up fa-lg"></span>Sign
-                Up</button>
-            <button *ngIf="!username" mat-menu-item (click)="openLoginForm()"><span
-                    class="fa fa-sign-in fa-lg"></span>Login</button>
-            <a *ngIf="username" mat-button (click)="logOut()"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
-        </mat-menu>
-        <button mat-button [matMenuTriggerFor]="acctMenu">
-            <mat-icon>account_box</mat-icon><span *ngIf="username">{{username}}</span>
-        </button>
-    </div>
-</mat-toolbar>
-<br />
-<router-outlet></router-outlet>
+  <nb-layout-footer fixed>
+  <!-- Insert footer here -->
+  </nb-layout-footer>
+
+</nb-layout>
