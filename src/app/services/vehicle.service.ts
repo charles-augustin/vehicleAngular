@@ -19,7 +19,6 @@ const httpOptions = {
 })
 export class VehicleService {
 
-
   constructor(private http: HttpClient, private processHTTPMsgService: ProcessHTTPMsgService) { }
 
   getVehicles(): Observable<Vehicle[]> {

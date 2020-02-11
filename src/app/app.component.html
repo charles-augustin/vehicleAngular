@@ -1,7 +1,4 @@
-<nb-layout>
-
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
+<!-- 
   <mat-toolbar color="primary" class="navbar">
         <div>Vehicle Renting Application</div>
         <div>
@@ -35,18 +32,30 @@
                 <mat-icon>account_box</mat-icon><span *ngIf="username">{{username}}</span>
             </button>
         </div>
-    </mat-toolbar>
-  </nb-layout-header>
+    </mat-toolbar> -->
 
-  <nb-layout-column>
-    
-    
-    <br />
+    <!-- <br /> -->
     <router-outlet></router-outlet>
-  </nb-layout-column>
 
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
-  </nb-layout-footer>
 
-</nb-layout>
+
+
+<!-- <nb-layout windowMode>
+    <nb-layout-header fixed>
+        <ngx-header></ngx-header>
+    </nb-layout-header>
+
+    <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
+        <ng-content select="nb-menu"></ng-content>
+    </nb-sidebar>
+    <router-outlet></router-outlet>
+    <nb-layout-column>
+        <ng-content>
+
+        </ng-content>
+    </nb-layout-column>
+
+    <nb-layout-footer fixed>
+        <ngx-footer></ngx-footer>
+    </nb-layout-footer>
+</nb-layout> -->

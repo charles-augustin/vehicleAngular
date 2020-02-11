@@ -89,7 +89,7 @@ export class AuthService {
         catchError(error => this.processHTTPMsgService.handleError));
   }
 
-  getUserName(): Observable<String> {
+  getUserName(): Observable<string> {
     return this.username.asObservable();
   }
 

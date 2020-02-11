@@ -1,11 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
   MatButtonModule,
   MatSidenavModule,
@@ -25,34 +22,34 @@ import {
 } from '@angular/material';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { VehicleService } from './services/vehicle.service';
+
+
 import { baseURL } from './shared/baseurl';
-import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
-import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import { ViewClientComponent } from './view-client/view-client.component';
-import { AddClientComponent } from './add-client/add-client.component';
-import { CreateReservationComponent } from './create-reservation/create-reservation.component';
-import { CancelReservationComponent } from './cancel-reservation/cancel-reservation.component';
-import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
-import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { DialogBoxComponent } from './pages/dialog-box/dialog-box.component';
+import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
 import { ClientService } from './services/client.service';
 import { ReserveService } from './services/reserve.service';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { NbThemeModule, NbLayoutModule, NbIconModule } from '@nebular/theme';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import {
+  NbIconModule, NbChatModule,
+  NbDatepickerModule,
+  NbDialogModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbToastrModule,
+  NbWindowModule
+} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { CoreModule } from './@core/core.module';
+import { ThemeModule } from './@theme/theme.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ViewVehicleComponent,
-    AddVehicleComponent,
     DialogBoxComponent,
-    ViewClientComponent,
-    AddClientComponent,
-    CreateReservationComponent,
-    CancelReservationComponent,
-    ReservationHistoryComponent,
     LoginComponent,
     SignUpComponent
   ],
@@ -80,16 +77,25 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule,
+    NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
+    NbWindowModule.forRoot(),
+    NbToastrModule.forRoot(),
+    NbChatModule.forRoot({
+      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+    }),
+    NbIconModule,
     NbEvaIconsModule,
-    NbIconModule
+    CoreModule.forRoot(),
+    ThemeModule.forRoot()
   ],
   entryComponents: [
     DialogBoxComponent,
     LoginComponent
   ],
-  providers: [VehicleService,
+  providers: [
     AuthService,
     ClientService,
     ReserveService,
