@@ -26,22 +26,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {
       value: 'default',
       name: 'Light',
-    },
-    {
-      value: 'dark',
-      name: 'Dark',
-    },
-    {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
-    },
+     },
+    // {
+    //   value: 'dark',
+    //   name: 'Dark',
+    // },
+    // {
+    //   value: 'cosmic',
+    //   name: 'Cosmic',
+    // },
+    // {
+    //   value: 'corporate',
+    //   name: 'Corporate',
+    // },
   ];
 
-  currentTheme = 'default';
+  currentTheme = 'dark';
 
   userMenu = [{ title: 'Login', icon: 'log-in-outline' }, { title: 'Log out', icon: 'log-out-outline' }];
 
@@ -67,8 +67,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(name => this.username = name);
 
     this.currentTheme = this.themeService.currentTheme;
-
-
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()

@@ -2,7 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
 
@@ -11,8 +10,9 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
-      path: 'dashboard',
-      component: DashboardComponent,
+      path: 'charts',
+      loadChildren: () => import('./charts/charts.module')
+        .then(m => m.ChartsModule),
     },
     {
       path: 'vehicle',
@@ -47,11 +47,6 @@ const routes: Routes = [{
       path: 'maps',
       loadChildren: () => import('./maps/maps.module')
         .then(m => m.MapsModule),
-    },
-    {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
     },
     {
       path: 'miscellaneous',
