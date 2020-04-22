@@ -6,6 +6,7 @@ import { Reserve } from 'src/app/shared/reserve';
 @Component({
   selector: 'ngx-d3-bar',
   template: `
+    
     <ngx-charts-bar-horizontal
       [scheme]="colorScheme"
       [results]="results"
@@ -13,19 +14,17 @@ import { Reserve } from 'src/app/shared/reserve';
       [yAxis]="showYAxis"
       [legend]="showLegend"
       [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel">
+      [yAxisLabel]="yAxisLabel"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [animations]="animations">
     </ngx-charts-bar-horizontal>
-  `,
+  `
 })
 export class D3BarComponent implements OnInit, OnDestroy {
 
-  results = [
-    { name: 'Germany', value: 8940 },
-    { name: 'USA', value: 5000 },
-    { name: 'France', value: 7200 },
-  ];
 
-  // results: any;
+  results: any;
 
   reserveData: Reserve[];
   showLegend = true;
@@ -33,6 +32,8 @@ export class D3BarComponent implements OnInit, OnDestroy {
   showYAxis = true;
   xAxisLabel = 'Client';
   yAxisLabel = 'Reservation Count';
+  showXAxisLabel: boolean = true;
+  showYAxisLabel: boolean = true;
   colorScheme: any;
   themeSubscription: any;
 
@@ -54,12 +55,15 @@ export class D3BarComponent implements OnInit, OnDestroy {
       }); 
   }
 
+  //using reduce method to get the count of reservation for each user
   getClientCount(reserveData: any) {
     let occurances = reserveData.reduce((r, row) => {
       r[row.client.firstName] = ++r[row.client.firstName] || 1;
       return r;
     }, {});
 
+    console.log(occurances);
+    
     let results = Object.keys(occurances).map((key) => {
       return {name: key, value: occurances[key]};
     });
