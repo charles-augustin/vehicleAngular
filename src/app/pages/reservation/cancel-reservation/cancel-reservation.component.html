@@ -51,10 +51,10 @@
             <ng-container matColumnDef="Action">
                 <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
                 <mat-cell *matCellDef="let element" class="action-link">
-                    <button mat-raised-button color="primary" (click)="action(element._id,'return')">
+                    <button mat-raised-button style="padding-right:54px"color="primary" (click)="action(element._id,'return')">
                         Return
                     </button>&nbsp;&nbsp;&nbsp;
-                    <button mat-raised-button color="primary" (click)="action(element._id,'cancel')">
+                    <button mat-raised-button style="margin-left:5px; padding-right:54px" color="primary" (click)="action(element._id,'cancel')">
                         Cancel
                     </button>
                 </mat-cell>

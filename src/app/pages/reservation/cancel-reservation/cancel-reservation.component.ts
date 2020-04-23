@@ -18,7 +18,7 @@ export class CancelReservationComponent implements OnInit {
   next: string;
   visibility = "shown";
   errMess: string;
-
+  data: any;
   dateVal = new Date();
 
   displayedColumns: string[] = ['No', 'vehicle', 'client', 'fromDate', 'toDate', 'status', 'Action'];
@@ -48,13 +48,24 @@ export class CancelReservationComponent implements OnInit {
         };
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-
+        this.data = this.dataSource;
         //add this line to perform case in-sensitive sort since angular performs case sensitive sort by default
         // this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
       });
+
+
   }
 
   applyFilter(filterValue: string) {
+    this.dataSource.filterPredicate = (data, filter: string) => {
+      return data.client.firstName.toLowerCase().includes(filter) ||
+        data.client.lastName.toLowerCase().includes(filter) ||
+        data.status.toLowerCase().includes(filter) ||
+        data.vehicle.Type.toLowerCase().includes(filter) ||
+        data.vehicle.Color.toLowerCase().includes(filter) ||
+        data.vehicle.Make.toLowerCase().includes(filter) ||
+        data.vehicle.Year.toString().toLowerCase().includes(filter);
+    };
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

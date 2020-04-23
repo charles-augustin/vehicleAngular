@@ -56,6 +56,15 @@ export class ReservationHistoryComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
+    this.dataSource.filterPredicate = function (data, filter: string): boolean {
+      return data.client.firstName.toLowerCase().includes(filter) ||
+        data.client.lastName.toLowerCase().includes(filter) ||
+        data.status.toLowerCase().includes(filter) ||
+        data.vehicle.Type.toLowerCase().includes(filter) ||
+        data.vehicle.Color.toLowerCase().includes(filter) ||
+        data.vehicle.Make.toLowerCase().includes(filter) ||
+        data.vehicle.Year.toString().toLowerCase().includes(filter);
+    };
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

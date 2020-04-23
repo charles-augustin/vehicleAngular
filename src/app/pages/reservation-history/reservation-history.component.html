@@ -29,8 +29,7 @@
             <ng-container matColumnDef="client">
                 <mat-header-cell mat-sort-header *matHeaderCellDef> Client </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.client.firstName}} {{element.client.lastName}} -
-                    {{element.client.licenseNo}} - {{element.client.phoneNo}} -
-                    {{element.client.lExpiryDate | date: 'mediumDate'}}
+                    {{element.client.licenseNo}} - {{element.client.phoneNo}}
                 </mat-cell>
             </ng-container>
 
