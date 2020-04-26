@@ -58,6 +58,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'browser-outline',
     link: '/pages/reservation-history'
   },
+  {
+    title: 'Chat',
+    icon: 'browser-outline',
+    link: '/pages/chat'
+  },
   // {
   //   title: 'Extra Components',
   //   icon: 'message-circle-outline',

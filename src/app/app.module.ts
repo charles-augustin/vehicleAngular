@@ -45,6 +45,9 @@ import {
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = {url: 'http://localhost:4000', options:{}};
 
 @NgModule({
   declarations: [
@@ -89,7 +92,8 @@ import { ThemeModule } from './@theme/theme.module';
     NbIconModule,
     NbEvaIconsModule,
     CoreModule.forRoot(),
-    ThemeModule.forRoot()
+    ThemeModule.forRoot(),
+    SocketIoModule.forRoot(config)
   ],
   entryComponents: [
     DialogBoxComponent,

@@ -1,0 +1,8 @@
+
+<nb-chat title="Chat Application" size="medium">
+    <nb-chat-message *ngFor="let msg of chats" [type]="msg.type" [message]="msg.message" [reply]="msg.name == username? true : false"
+        [sender]="msg.name" [date]="msg.createdAt" [files]="msg.files">
+    </nb-chat-message>
+    <nb-chat-form (send)="sendMessage($event)" [dropFiles]="true">
+    </nb-chat-form>
+</nb-chat>

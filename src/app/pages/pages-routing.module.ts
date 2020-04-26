@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [{
   path: '',
@@ -32,6 +33,10 @@ const routes: Routes = [{
     {
       path: 'reservation-history',
       component: ReservationHistoryComponent
+    },
+    {
+      path: 'chat',
+      component: ChatComponent
     },
     {
       path: 'ui-features',
