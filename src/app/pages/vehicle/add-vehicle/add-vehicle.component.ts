@@ -13,6 +13,8 @@ export class AddVehicleComponent implements OnInit {
 
   vehicle: Vehicle;
 
+  image;
+
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private vehicleService: VehicleService) {
 
   }
@@ -24,7 +26,8 @@ export class AddVehicleComponent implements OnInit {
       Model: new FormControl('', [Validators.required]),
       Year: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,4}')]),
       Color: new FormControl('', [Validators.required]),
-      PlateNo: new FormControl('', [Validators.required])
+      PlateNo: new FormControl('', [Validators.required]),
+      ImageFile: new FormControl('', [Validators.required])
     });
 
   ngOnInit() {
@@ -36,8 +39,17 @@ export class AddVehicleComponent implements OnInit {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    console.log(this.addForm.value);
-    this.vehicleService.addVehicle(this.addForm.value)
+
+    const fd = new FormData();
+    fd.append('Type', this.addForm.get('Type').value);
+    fd.append('Make', this.addForm.get('Make').value);
+    fd.append('Model', this.addForm.get('Model').value);
+    fd.append('Year', this.addForm.get('Year').value);
+    fd.append('Color', this.addForm.get('Color').value);
+    fd.append('PlateNo', this.addForm.get('PlateNo').value);
+    fd.append('VehicleImage', this.image);    
+
+    this.vehicleService.addVehicle(fd)
       .subscribe(
         vehicle => this.vehicle = <Vehicle>vehicle
       );
@@ -49,5 +61,15 @@ export class AddVehicleComponent implements OnInit {
     this._snackBar.open("Vehicle Created Successfully", "", {
       duration: 2500
     });
+  }
+
+  selectImage(event) {
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.image = file;       
+    }
+    else {
+      this.image = null;
+    }
   }
 }

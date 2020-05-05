@@ -15,13 +15,15 @@ export class DialogBoxComponent implements OnInit {
   vehicle: Vehicle;
   client: Client;
   errMess: any;
+  image;
   updateForm = new FormGroup({
     Type: new FormControl('', [Validators.required]),
     Make: new FormControl('', [Validators.required]),
     Model: new FormControl('', [Validators.required]),
     Year: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,4}')]),
     Color: new FormControl('', [Validators.required]),
-    PlateNo: new FormControl('', [Validators.required])
+    PlateNo: new FormControl('', [Validators.required]),
+    ImageFile: new FormControl('', [])
   });
 
   clientForm = new FormGroup({
@@ -59,8 +61,17 @@ export class DialogBoxComponent implements OnInit {
     if (this.action == 'vehicleUpdate') {
       console.log(this.updateForm.value);
       console.log(this.local_data);
-      
-      this.vehicleService.updateVehicle(this.local_data, this.local_data._id)
+
+      const fd = new FormData();
+      fd.append('Type', this.updateForm.get('Type').value);
+      fd.append('Make', this.updateForm.get('Make').value);
+      fd.append('Model', this.updateForm.get('Model').value);
+      fd.append('Year', this.updateForm.get('Year').value);
+      fd.append('Color', this.updateForm.get('Color').value);
+      fd.append('PlateNo', this.updateForm.get('PlateNo').value);
+      fd.append('VehicleImage', this.image);
+
+      this.vehicleService.updateVehicle(fd, this.local_data._id)
         .subscribe(vehicle => this.vehicle = <Vehicle>vehicle);
     }
     else if (this.action == 'vehicleDelete') {
@@ -78,6 +89,16 @@ export class DialogBoxComponent implements OnInit {
     // formDirective.resetForm();
     // this.updateForm.reset();
     // this.local_data=null;
+  }
+
+  selectImage(event) {
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.image = file;       
+    }
+    else {
+      this.image = null;
+    }
   }
 
   closeDialog() {

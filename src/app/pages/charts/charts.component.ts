@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'ngx-charts',
   template: `
     
-    <div class="col-lg-6">
+    <div>
       <nb-card>
         <nb-card-header>User Reservation Count</nb-card-header>
         <nb-card-body>
@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
       </nb-card>
     </div>
 
-    <div class="col-lg-6">
+    <div>
       <nb-card>
         <nb-card-header>Popular Cars - Reservation</nb-card-header>
         <nb-card-body>

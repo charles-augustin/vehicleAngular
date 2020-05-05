@@ -63,6 +63,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'browser-outline',
     link: '/pages/chat'
   },
+  {
+    title: 'Grid View',
+    icon: 'browser-outline',
+    link: '/pages/grid-view'
+  },
   // {
   //   title: 'Extra Components',
   //   icon: 'message-circle-outline',

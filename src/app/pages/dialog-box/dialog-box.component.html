@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
-<form [formGroup]="updateForm" #formDirective="ngForm">
+<h5 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h5>
+<form class="form" [formGroup]="updateForm" #formDirective="ngForm">
   <mat-dialog-content *ngIf="(action == 'vehicleDelete' || action == 'vehicleUpdate'); else clientTemplate">
     <mat-form-field *ngIf="action != 'vehicleDelete'">
       <input placeholder="Type" formControlName="Type" matInput [(ngModel)]="local_data.Type">
@@ -16,9 +16,11 @@
     <mat-form-field *ngIf="action != 'vehicleDelete'">
       <input placeholder="Year" formControlName="Year" matInput [(ngModel)]="local_data.Year">
     </mat-form-field>
-    <mat-form-field *ngIf="action != 'vehicleDelete'; else elseTemplate">
+    <mat-form-field *ngIf="action != 'vehicleDelete';">
       <input placeholder="PlateNo" formControlName="PlateNo" matInput [(ngModel)]="local_data.PlateNo">
     </mat-form-field>
+    <input type="file" *ngIf="action != 'vehicleDelete'; else elseTemplate" formControlName="ImageFile"
+      (change)="selectImage($event)">
     <ng-template #elseTemplate>
       Sure to delete ?
     </ng-template>
@@ -43,7 +45,7 @@
     </mat-form-field>
     <mat-form-field *ngIf="action != 'clientDelete'">
       <input [matDatepicker]="myDatepicker" placeholder="License Expiry Date" formControlName="lExpiryDate" matInput
-        [(ngModel)]="local_data.lExpiryDate" >
+        [(ngModel)]="local_data.lExpiryDate">
       <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>
     </mat-form-field>

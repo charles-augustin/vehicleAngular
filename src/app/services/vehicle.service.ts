@@ -39,12 +39,12 @@ export class VehicleService {
   addVehicle(userData): Observable<Vehicle> {
     console.log(userData);
 
-    return this.http.post<Vehicle>(baseURL + 'vehicles', userData, httpOptions)
+    return this.http.post<Vehicle>(baseURL + 'vehicles', userData)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   updateVehicle(updateData, id: any): Observable<Vehicle> {
-    return this.http.put<Vehicle>(baseURL + 'vehicles/' + id, updateData, httpOptions)
+    return this.http.put<Vehicle>(baseURL + 'vehicles/' + id, updateData)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 

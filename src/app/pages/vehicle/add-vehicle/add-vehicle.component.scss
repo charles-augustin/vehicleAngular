@@ -13,3 +13,21 @@ button {
 .container {
   margin: 10px 10px;
 }
+
+.image-align {
+  margin-left: -20px;
+  margin-top: 19px;
+
+}
+
+.image-align input {
+  padding-left: 20px;
+}
+
+.image-align mat-error {
+  position: relative;
+  top:5px;
+  left: -128px;
+}
+
+
