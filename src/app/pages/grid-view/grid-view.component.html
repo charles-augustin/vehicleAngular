@@ -3,11 +3,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script> -->
-    
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4 vehicle-bg" *ngFor = "let vehicle of vehicles">
-            <img [src]="baseURL + vehicle.ImageURL" alt="">
+        <div class="col-md-4 vehicle-wrapper" *ngFor="let vehicle of vehicles">
+            <div class="vehicle-bg">
+                <img [src]="baseURL + vehicle.ImageURL" class="w-100" alt="">
+                <a (click)="goToReview(vehicle._id)"> {{ vehicle.Make }} - {{vehicle.Model }}</a>
+                <fa-icon [icon]="faHeart" title="Add to favorites..."></fa-icon>
+            </div>
         </div>
     </div>
 </div>

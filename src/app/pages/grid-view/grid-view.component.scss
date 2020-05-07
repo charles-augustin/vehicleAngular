@@ -1,5 +1,36 @@
+.vehicle-wrapper {
+    margin-bottom: 20px;
+}
+
+.vehicle-bg {
+    position: relative;
+}
 .vehicle-bg img {
     height: 200px;
-    width: 300px;
-    margin-bottom: 30px;
+    border-radius: 3%;
+}
+
+
+.vehicle-bg a {
+    position: absolute;
+    color:white;
+    right: 0;
+    top:0;
+    background-color: black;
+    padding: 3px;
+    border: black 1px solid;
+    border-radius: 17%;
+    cursor: pointer;
+}
+
+.vehicle-bg fa-icon {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-size: 25px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding:5px;
+    cursor: pointer;
 }

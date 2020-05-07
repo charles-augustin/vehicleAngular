@@ -108,4 +108,5 @@ const config: SocketIoConfig = {url: 'http://localhost:4000', options:{}};
     { provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }

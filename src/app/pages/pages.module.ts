@@ -12,6 +12,7 @@ import { ReservationModule } from './reservation/reservation.module';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
 import { ChatComponent } from './chat/chat.component';
 import { GridViewComponent } from './grid-view/grid-view.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { GridViewComponent } from './grid-view/grid-view.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
+    FontAwesomeModule
   ],
   declarations: [
     PagesComponent,

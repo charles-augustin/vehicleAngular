@@ -3,6 +3,7 @@ import { Vehicle } from 'src/app/shared/vehicle';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
 import {baseURL} from '../../shared/baseurl'
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'grid-view',
@@ -12,6 +13,7 @@ import {baseURL} from '../../shared/baseurl'
 export class GridViewComponent implements OnInit {
     vehicles : Vehicle[];
     baseURL: String;
+    faHeart = faHeart;
 
     constructor(private vehicleService : VehicleService) {
         this.baseURL = baseURL;
