@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Vehicle } from 'src/app/shared/vehicle';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
-import {baseURL} from '../../shared/baseurl'
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {baseURL} from '../../../shared/baseurl'
+
 
 @Component({
     selector: 'grid-view',
@@ -13,7 +13,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 export class GridViewComponent implements OnInit {
     vehicles : Vehicle[];
     baseURL: String;
-    faHeart = faHeart;
+    
 
     constructor(private vehicleService : VehicleService) {
         this.baseURL = baseURL;
@@ -28,6 +28,17 @@ export class GridViewComponent implements OnInit {
             .subscribe(res => {
                 this.vehicles = res;
                 console.log(this.vehicles);
+            });
+    }
+
+    addToFavorites(id:string) {
+        this.vehicleService.postFavorites(id)
+            .subscribe(res => {
+                if(res.vehicles.length > 1) {
+                    res.vehicles.forEach(a => {
+                        this.vehicles.find(dat => dat._id == id)
+                    })
+                }
             });
     }
 

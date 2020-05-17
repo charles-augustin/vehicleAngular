@@ -21,6 +21,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'View Vehicle',
         link: '/pages/vehicle/view-vehicle',
+      },
+      {
+        title: 'Grid View',
+        link: '/pages/vehicle/grid-view'
       }
     ]
   },
@@ -62,12 +66,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Chat',
     icon: 'browser-outline',
     link: '/pages/chat'
-  },
-  {
-    title: 'Grid View',
-    icon: 'browser-outline',
-    link: '/pages/grid-view'
-  },
+  }
   // {
   //   title: 'Extra Components',
   //   icon: 'message-circle-outline',

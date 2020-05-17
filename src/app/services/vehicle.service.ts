@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
 
 import { ProcessHTTPMsgService } from './process-httpmsg.service'
-import { Client } from '../shared/client';
+import { Favorite } from '../shared/favorite';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -39,12 +39,12 @@ export class VehicleService {
   addVehicle(userData): Observable<Vehicle> {
     console.log(userData);
 
-    return this.http.post<Vehicle>(baseURL + 'vehicles', userData)
+    return this.http.post<Vehicle>(baseURL + 'vehicles', userData, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   updateVehicle(updateData, id: any): Observable<Vehicle> {
-    return this.http.put<Vehicle>(baseURL + 'vehicles/' + id, updateData)
+    return this.http.put<Vehicle>(baseURL + 'vehicles/' + id, updateData, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
@@ -60,6 +60,21 @@ export class VehicleService {
 
   updateVehicleAvailability(id, status): Observable<Vehicle> {
     return this.http.put<Vehicle>(baseURL + 'vehicles/updateVehicleStatus/' + id, status, httpOptions)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
+  postFavorites(id): Observable<Favorite> {
+    return this.http.post<Favorite>(baseURL + 'favorites', id)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
+  getFavorites(): Observable<Favorite> {
+    return this.http.get<Favorite>(baseURL + 'favorites')
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
+  removeFavourites(id: string): Observable<Favorite> {
+    return this.http.delete<Favorite>(baseURL + 'favorites/' + id, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 

@@ -5,13 +5,18 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { VehicleRoutingModule } from './vehicle-routing.module';
 import { VehicleComponent } from './vehicle.component';
 import { MatInputModule, MatSelectModule, MatButtonModule, MatSidenavModule, MatIconModule, MatToolbarModule, MatMenuModule, MatTableModule, MatFormFieldModule, MatSortModule, MatPaginatorModule, MatCardModule, MatSnackBarModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VehicleService } from '../../services/vehicle.service';
+import { GridViewComponent } from './grid-view/grid-view.component';
+import { VehicleDetailComponent } from './vehicle-detail/vehicle-detail.component';
 
 const components = [
     AddVehicleComponent,
     ViewVehicleComponent,
-    VehicleComponent
+    VehicleComponent,
+    GridViewComponent,
+    VehicleDetailComponent
 ];
 
 @NgModule({
@@ -34,7 +39,8 @@ const components = [
         MatCardModule,
         MatSnackBarModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        FontAwesomeModule
     ],
     declarations: [
         ...components

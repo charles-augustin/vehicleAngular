@@ -11,8 +11,6 @@ import { MatButtonModule, MatSidenavModule, MatIconModule, MatToolbarModule, Mat
 import { ReservationModule } from './reservation/reservation.module';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
 import { ChatComponent } from './chat/chat.component';
-import { GridViewComponent } from './grid-view/grid-view.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -43,14 +41,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule,
-    FontAwesomeModule
+    MatGridListModule
   ],
   declarations: [
     PagesComponent,
     ReservationHistoryComponent,
-    ChatComponent,
-    GridViewComponent
+    ChatComponent
   ],
 })
 export class PagesModule {

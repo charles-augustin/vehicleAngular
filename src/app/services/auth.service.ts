@@ -96,4 +96,12 @@ export class AuthService {
   logOut() {
     this.destroyCredentials();
   }
+
+  getToken() : string {
+    return this.authToken;
+  }
+
+  isLoggedIn(): boolean {
+    return this.isAuthenticated;
+  }
 }

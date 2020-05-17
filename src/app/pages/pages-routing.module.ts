@@ -6,7 +6,6 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
 import { ChatComponent } from './chat/chat.component';
 import { GridComponent } from './ui-features/grid/grid.component';
-import { GridViewComponent } from './grid-view/grid-view.component';
 
 const routes: Routes = [{
   path: '',
@@ -39,10 +38,6 @@ const routes: Routes = [{
     {
       path: 'chat',
       component: ChatComponent
-    },
-    {
-      path: 'grid-view',
-      component: GridViewComponent
     },
     {
       path: 'ui-features',

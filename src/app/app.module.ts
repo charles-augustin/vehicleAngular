@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -46,6 +46,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { AuthInterceptor, UnauthorizedInterceptor } from './services/auth.interceptor';
+import { AuthGuardService } from './services/auth.guard';
 
 const config: SocketIoConfig = {url: 'http://localhost:4000', options:{}};
 
@@ -101,11 +103,22 @@ const config: SocketIoConfig = {url: 'http://localhost:4000', options:{}};
   ],
   providers: [
     AuthService,
+    AuthGuardService,
     ClientService,
     ReserveService,
     { provide: 'baseURL', useValue: baseURL },
     { provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: [] }],
+    { provide: MAT_DIALOG_DATA, useValue: [] },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

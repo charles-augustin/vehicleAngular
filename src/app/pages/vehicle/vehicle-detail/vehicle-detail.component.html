@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" *ngIf="vehicle">
+            <img class="vehicle-img" [src]="baseURL + vehicle.ImageURL"><br><br>
+            <div class="vehicle-info">
+                <label>Make </label> : <b>{{ vehicle.Make }}</b><br>
+                <label>Model </label> : <b>{{ vehicle.Model }}</b><br>
+                <label>Color </label> : <b>{{ vehicle.Color }}</b><br>
+                <label>Year </label> : <b>{{ vehicle.Year }}</b><br>
+                <label>Type </label> : <b>{{ vehicle.Type }}</b><br>
+                <label>Plate No </label> : <b>{{ vehicle.PlateNo }}</b><br>
+                <label>Availability </label> : <b>{{ vehicle.Available }}</b><br><br>
+            </div>
+            <div>
+                <button class="fav btn btn-danger"
+                    (click)="favorite ? removeFavorites(vehicle._id): addToFavorites(vehicle._id)">Add to Favorites
+                </button>
+
+                <button class="fav-icon btn btn-danger">
+                    <fa-icon [icon]="favorite ? faHeart : faHeartFilled"></fa-icon>
+                </button>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            vehicle - {{vehicleID}}
+            <form action="">
+                <br>
+                <input type="text" class="form-control" placeholder="Review" /><br>
+                <ul class="rating-list" *ngFor="let star of stars">
+                    <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
+                        <fa-icon [icon]="faStar"></fa-icon>
+                    </li>
+                </ul><br>
+            </form>
+        </div>
+    </div>
+</div>

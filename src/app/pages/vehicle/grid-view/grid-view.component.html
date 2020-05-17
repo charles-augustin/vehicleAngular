@@ -7,10 +7,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 vehicle-wrapper" *ngFor="let vehicle of vehicles">
-            <div class="vehicle-bg">
+            <div class="vehicle-bg" [routerLink]="['../vehicle-detail', vehicle._id]">
                 <img [src]="baseURL + vehicle.ImageURL" class="w-100" alt="">
-                <a (click)="goToReview(vehicle._id)"> {{ vehicle.Make }} - {{vehicle.Model }}</a>
-                <fa-icon [icon]="faHeart" title="Add to favorites..."></fa-icon>
+                <a > {{ vehicle.Make }} - {{vehicle.Model }}</a>
+                <!-- <fa-icon [icon]="faHeart" (click) = "addToFavorites(vehicle._id)" title="Add to favorites..."></fa-icon> -->
             </div>
         </div>
     </div>
