@@ -66,6 +66,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Chat',
     icon: 'browser-outline',
     link: '/pages/chat'
+  },
+  {
+    title: 'My Favorites',
+    icon: 'keypad-outline',
+    link: '/pages/favorites'
   }
   // {
   //   title: 'Extra Components',

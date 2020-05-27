@@ -26,7 +26,6 @@ export class VehicleDetailComponent implements OnInit {
     faStar = faStar;
     faHeart = faHeart;
     faHeartFilled = faHeartFilled;
-
     ngOnInit() {
         this.vehicleID = this.route.snapshot.params['id'];
         this.getVehicleInfo(this.vehicleID);
@@ -52,7 +51,7 @@ export class VehicleDetailComponent implements OnInit {
                 console.log(this.favorites);
                 
                 this.favorites.vehicles.forEach(a => {
-                    if(a+'' == this.vehicleID)
+                    if(a._id+'' == this.vehicleID)
                         this.favorite = true;
                 })
             });

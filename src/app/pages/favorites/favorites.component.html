@@ -1,0 +1,19 @@
+<div>
+    <div class="container-fluid" *ngIf="favorites else error">
+        <div class="row" *ngIf="favorites.vehicles else error">
+            <div class="col-md-4 vehicle-wrapper" *ngFor="let vehicle of favorites.vehicles">
+                <div class="vehicle-bg">
+                    <img [src]="baseURL + vehicle.ImageURL" class="w-100" alt="">
+                    <a> {{ vehicle.Make }} - {{vehicle.Model }}</a>
+                    <!-- <fa-icon [icon]="faHeart" (click) = "addToFavorites(vehicle._id)" title="Add to favorites..."></fa-icon> -->
+                </div>
+            </div>
+        </div>
+        <ng-template #error>
+            <div class="fav-error">No Favorites available</div> 
+        </ng-template>
+    </div>
+    <ng-template #error>
+        <div class="fav-error">No Favorites available</div>      
+    </ng-template>
+</div>

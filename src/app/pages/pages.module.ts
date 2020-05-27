@@ -11,6 +11,7 @@ import { MatButtonModule, MatSidenavModule, MatIconModule, MatToolbarModule, Mat
 import { ReservationModule } from './reservation/reservation.module';
 import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
 import { ChatComponent } from './chat/chat.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ChatComponent } from './chat/chat.component';
   declarations: [
     PagesComponent,
     ReservationHistoryComponent,
-    ChatComponent
+    ChatComponent,
+    FavoritesComponent
   ],
 })
 export class PagesModule {
